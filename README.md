@@ -104,6 +104,11 @@ MIT,Computer Science,PhD,March 15,2024,Accepted,3.9,160,170,5.0,"Excited to join
 
 ---
 
+## Dataset di esempio
+Nella cartella csv_output sono presenti due dataset di esempio, estratti in precedenza e basati sui programmi master di mio interesse personale. Questi file CSV possono essere utilizzati come riferimento per la struttura dei dati e per testare eventuali analisi senza dover eseguire subito lo scraping.
+
+---
+
 ## Personalizzazione
 
 * Puoi modificare l'intervallo di sleep (attualmente 0.5 s) per bilanciare velocità e carico sul server.
