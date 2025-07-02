@@ -384,10 +384,10 @@ def main():
     print(f"\n{Fore.GREEN}✅ Estrazione completata.{Style.RESET_ALL}")
     
     # Salva i risultati in CSV
-    output_dir = os.path.join("CSVs", "GradCafe")
+    output_dir = "output_csv"
     os.makedirs(output_dir, exist_ok=True)
 
-        # Costruisci il nome del file dinamicamente
+    # Costruisci il nome del file dinamicamente
     filename_parts = []
     
     # Aggiungi istituzione se presente
