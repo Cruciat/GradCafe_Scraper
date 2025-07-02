@@ -1,25 +1,25 @@
 # GradCafe Scraper
 
-**GradCafe Scraper** è un tool da linea di comando scritto in Python per estrarre automaticamente i dati delle decisioni da [The GradCafe](https://www.thegradcafe.com/survey/). Utilizza `requests` e `BeautifulSoup` per navigare e parsare le pagine di risultati, e salva i dati raccolti in un file CSV strutturato.
+**GradCafe Scraper** is a command-line tool written in Python that automatically extracts admission decision data from [The GradCafe](https://www.thegradcafe.com/survey/). It uses `requests` and `BeautifulSoup` to navigate and parse result pages, and saves the collected data into a structured CSV file.
 
 ---
 
-## Caratteristiche principali
+## Main Features
 
-* **Ricerca parametrica**: filtra per istituzione, programma e tipo di degree.
-* **Navigazione automatica**: attraversa tutte le pagine dei risultati e gestisce dinamicamente la paginazione.
-* **Estrazione dettagliata**: estrae scuola, programma, livello di studio, data di inserimento, decisione, GPA e punteggi GRE (V, Q, AW), più eventuali commenti.
-* **Barra di stato interattiva**: mostra una barra di progresso colorata con percentuale, pagina corrente e numero di voci raccolte.
-* **Output CSV**: salva i dati in un file CSV nominato automaticamente in base ai parametri e alla data di esecuzione.
+* **Parametric search**: filters by institution, program, and degree type.
+* **Automatic pagination**: navigates through all result pages and handles pagination dynamically.
+* **Detailed extraction**: extracts school, program, study level, submission date, decision, GPA and GRE scores (V, Q, AW), plus any comments.
+* **Interactive status bar**: displays a colored progress bar with percentage, current page, and number of entries collected.
+* **CSV output**: saves data into a CSV file automatically named based on parameters and execution date.
 
 ---
 
-## Prerequisiti
+## Requirements
 
-* Python 3.7 o superiore
-* Connessione Internet
+* Python 3.7 or higher  
+* Internet connection
 
-Il programma richiede le seguenti librerie Python (installabili tramite `requirements.txt`):
+The program requires the following Python libraries (installable via `requirements.txt`):
 
 ```text
 requests>=2.0
@@ -30,16 +30,16 @@ colorama>=0.4
 
 ---
 
-## Installazione
+## Installation
 
-1. Clona questo repository:
+1. Clone this repository:
 
    ```bash
-   git clone https://github.com/tuo-utente/gradcafe-scraper.git
+   git clone https://github.com/your-username/gradcafe-scraper.git
    cd gradcafe-scraper
    ```
 
-2. Crea e attiva un ambiente virtuale (opzionale, ma consigliato):
+2. Create and activate a virtual environment (optional but recommended):
 
    ```bash
    python -m venv venv
@@ -49,7 +49,7 @@ colorama>=0.4
    source venv/bin/activate
    ```
 
-3. Installa le dipendenze:
+3. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
@@ -57,46 +57,46 @@ colorama>=0.4
 
 ---
 
-## Utilizzo
+## Usage
 
-Avvia lo script da terminale:
+Run the script from terminal:
 
 ```bash
 python gradcafe_scraper.py
 ```
 
-Segui le istruzioni interattive:
+Follow the interactive prompts:
 
-1. Inserisci il nome dell'istituzione (puoi lasciare vuoto per nessun filtro).
-2. Inserisci il programma di studio (puoi lasciare vuoto).
-3. Seleziona il tipo di degree dal menu.
+1. Enter the name of the institution (leave blank for no filter).
+2. Enter the program name (leave blank for no filter).
+3. Select the degree type from the menu.
 
-Il tool mostrerà un riepilogo dei parametri e inizierà il download delle pagine; vedrai una barra di avanzamento. Al termine, troverai il CSV generato in:
+The tool will display a summary of your input and start downloading the result pages; you'll see a progress bar. When done, you'll find the generated CSV in:
 
 ```
-CSVs/GradCafe/<istituzione>_<programma>_<degree>_<GGMMYYYY>.csv
+CSVs/GradCafe/<institution>_<program>_<degree>_<DDMMYYYY>.csv
 ```
 
 ---
 
-## Struttura del CSV
+## CSV Structure
 
-Il file CSV conterrà le seguenti colonne:
+The CSV file will contain the following columns:
 
-| Colonna  | Descrizione                                |
+| Column   | Description                                |
 | -------- | ------------------------------------------ |
-| School   | Nome dell'istituzione                      |
-| Program  | Programma                                  |
-| Level    | Livello di studio (es. PhD, Masters, etc.) |
-| Added on | Data di inserimento nel database           |
-| Decision | Esito della decisione (First word only)    |
-| GPA      | GPA segnalato                              |
-| GRE V    | Punteggio GRE Verbale                      |
-| GRE Q    | Punteggio GRE Quantitativo                 |
-| GRE AW   | Punteggio GRE Analytical Writing           |
-| Comment  | Eventuale commento aggiuntivo              |
+| School   | Institution name                           |
+| Program  | Program name                               |
+| Level    | Level of study (e.g., PhD, Masters, etc.)  |
+| Added on | Submission date                            |
+| Decision | Decision outcome (first word only)         |
+| GPA      | Reported GPA                               |
+| GRE V    | GRE Verbal score                           |
+| GRE Q    | GRE Quantitative score                     |
+| GRE AW   | GRE Analytical Writing score               |
+| Comment  | Any additional comment                     |
 
-### Esempio di riga CSV
+### Example CSV row
 
 ```
 MIT,Computer Science,PhD,March 15,2024,Accepted,3.9,160,170,5.0,"Excited to join!"
@@ -104,28 +104,29 @@ MIT,Computer Science,PhD,March 15,2024,Accepted,3.9,160,170,5.0,"Excited to join
 
 ---
 
-## Dataset di esempio
-Nella cartella csv_output sono presenti due dataset di esempio, estratti in precedenza e basati sui programmi master di mio interesse personale. Questi file CSV possono essere utilizzati come riferimento per la struttura dei dati e per testare eventuali analisi senza dover eseguire subito lo scraping.
+## Sample Dataset
+
+In the `csv_output` folder, you’ll find two sample datasets previously extracted, based on master’s programs of personal interest. These CSV files can be used as a reference for the data structure or to test analyses without having to run the scraper right away.
 
 ---
 
-## Personalizzazione
+## Customization
 
-* Puoi modificare l'intervallo di sleep (attualmente 0.5 s) per bilanciare velocità e carico sul server.
-* Il user agent è configurato nella variabile `headers`; puoi cambiarlo se necessario.
-
----
-
-## Contributi
-
-I contributi sono i benvenuti! Apri una pull request o segnala un issue per bug o nuove funzionalità.
+* You can adjust the sleep interval (currently 0.5 s) to balance speed and server load.
+* The user agent is configured in the `headers` variable; feel free to change it if needed.
 
 ---
 
-## Licenza
+## Contributions
 
-Questo progetto è distribuito sotto licenza MIT. Vedi il file `LICENSE` per i dettagli.
+Contributions are welcome! Feel free to open a pull request or report an issue for bugs or feature suggestions.
 
 ---
 
-*Ultimo aggiornamento: 2 luglio 2025*
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+*Last updated: July 2, 2025*
