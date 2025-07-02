@@ -402,8 +402,8 @@ def main():
     if degree.strip():
         filename_parts.append(degree.strip().replace(' ', '_'))
     
-    # Aggiungi data corrente in formato europeo (GGMMYYYY)
-    date_str = datetime.now().strftime('%d%m%Y')  # Modificato da %Y%m%d a %d%m%Y
+    # Aggiungi data corrente in formato europeo (GG_MM_YYYY)
+    date_str = datetime.now().strftime('%d_%m_%Y')  # Modificato da %Y%m%d a %d%m%Y
     filename_parts.append(date_str)
     
     # Crea il nome del file senza maiuscole e con underscore
